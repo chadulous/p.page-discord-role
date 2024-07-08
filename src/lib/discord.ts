@@ -1,7 +1,9 @@
 import { clientId, clientSecret } from "$env/static/private";
 import { Discord, type DiscordTokens } from "arctic";
 import { keys, kv } from "./db";
-export const discord = new Discord(clientId, clientSecret, 'https://prpage-discord.deno.dev/discord/callback');
+import { dev } from "$app/environment"
+
+export const discord = new Discord(clientId, clientSecret, dev?'http://localhost:5173/discord/callback':'https://prpage-discord.deno.dev/discord/callback');
 
 export async function getUserData(accessToken: string) {
     const URL = "https://discord.com/api/users/@me"
