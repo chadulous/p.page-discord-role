@@ -1,11 +1,7 @@
 <h1>pronouns.page linked role</h1>
 
-<a href="https://prpage-discord.deno.dev/discord/bot"
-  >Add the app to your server</a
->
-<a href="https://prpage-discord.deno.dev/discord/link"
-  >Link the app to your account</a
->
+<a href="https://prpage-discord.deno.dev/discord/bot">Add the app to your server</a>
+<a href="https://prpage-discord.deno.dev/discord/link">Link the app to your account</a>
 
 <h2>howto</h2>
 
@@ -31,7 +27,7 @@
 
 <details>
   <summary>Example</summary>
-  <img width="467" alt="Example screenshot of the linked role user badge" src="https://github.com/chadulous/p.page-discord-role/assets/76607214/53a2e07c-fecd-44f4-9b7b-e0b8e67ee1b8">
+  <img width="633" alt="Example screenshot of the linked role user badge" src="https://github.com/chadulous/p.page-discord-role/assets/76607214/3b2958ae-696a-41aa-bdda-be8fae10fb42">
 </details>
 
 to activate the user badge that shows up next to names in chat,<br />
