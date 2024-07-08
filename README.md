@@ -1,38 +1,32 @@
-# create-svelte
+# pronouns.page linked roles bot
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+<a href="https://prpage-discord.deno.dev/discord/bot">Add the app to your server</a>
+<a href="https://prpage-discord.deno.dev/discord/link">Link the app to your account</a>
 
-## Creating a project
+## howto
 
-If you're seeing this, you've probably already done this step. Congrats!
+### activate the link & make a role
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+<details>
+    <summary>Example</summary>
+    (image)
+</details>
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+1. add the bot to your server (it is offline)
+2. create a new role, or go to the settings of a role with no users already on it.
+3. select "links", click "add requirement"
+4. click the box that says "(unofficial) pronouns..."
+**you have now created a linked connection role**
 
-## Developing
+### activate the user badge
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+<details>
+    <summary>Example</summary>
+    (image)
+</details>
 
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+to activate the user badge that shows up next to names in chat, <br>
+you need to have a channel where the role is in the permissions settings. <br>
+1. Go to the channel settings of the channel(s) you want the badge to show up in
+2. add the role to the permissions
+3. set view channel to the checkmark (this even works for channels where @everyone already has view channel)
