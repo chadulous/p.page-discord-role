@@ -1,7 +1,7 @@
 <h1>pronouns.page linked role</h1>
 
-<a href="https://prpage-discord.deno.dev/discord/bot">Add the app to your server</a>
-<a href="https://prpage-discord.deno.dev/discord/link">Link the app to your account</a>
+<a href="/discord/bot">Add the app to your server</a>
+<a href="/discord/link">Link the app to your account</a>
 
 <h2>howto</h2>
 
