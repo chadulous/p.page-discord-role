@@ -1,4 +1,5 @@
-import { clientId } from '$env/static/private'
+import { env } from "$env/dynamic/private";
+const { clientId } = env
 import { keys, kv } from '$lib/db.js'
 import { getAccessToken } from '$lib/discord.js'
 import { userFromDiscordID } from '$lib/pronouns.page.js'

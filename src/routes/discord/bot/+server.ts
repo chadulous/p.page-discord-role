@@ -1,4 +1,5 @@
-import { clientId } from '$env/static/private';
+import { env } from "$env/dynamic/private";
+const { clientId } = env
 import { redirect } from '@sveltejs/kit';
 
 export function GET() {

@@ -1,7 +1,9 @@
-import { clientId, clientSecret } from "$env/static/private";
+import { env } from "$env/dynamic/private";
+const { clientId, clientSecret } = env
 import { Discord, type DiscordTokens } from "arctic";
 import { keys, kv } from "./db";
 import { dev } from "$app/environment"
+
 
 export const discord = new Discord(clientId, clientSecret, dev?'http://localhost:5173/discord/callback':'https://prpage-discord.deno.dev/discord/callback');
 
