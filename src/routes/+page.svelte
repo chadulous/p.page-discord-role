@@ -42,3 +42,13 @@ you need to have a channel where the role is in the permissions settings. <br />
     even works for channels where @everyone already has view channel)
   </li>
 </ul>
+
+<h3>claim the role</h3>
+
+you may claim the role via the 'Linked roles' option in the server dropdown
+<ul>
+    <li>open the server dropdown</li>
+    <li>select linked roles</li>
+    <li>click the role name for pronouns.page</li>
+    <li></li>
+</ul>
