@@ -1,5 +1,3 @@
-import { env } from "$env/dynamic/private";
-const { clientId } = env
 import { keys, kv } from '$lib/db.js'
 import { getAccessToken, pushMetadata, revokeAccessToken } from '$lib/discord.js'
 import { userFromDiscordID } from '$lib/pronouns.page.js'
@@ -19,26 +17,26 @@ export async function load({ cookies, fetch }) {
     if (!lastUpdate.value || updateDate.getTime() - lastUpdate.value.getTime() >= 900000) {
         const accessToken = await getAccessToken(userId)
         if (!accessToken) throw redirect(302, '/discord/link')
-        const res = await pushMetadata(accessToken, user.username)
+        const res = await pushMetadata(accessToken, fetch, user.username)
         if(res.ok) kv.set(keys.lastUpdate(userId), updateDate)
     }
     return { username: user.username, avatar: user.avatar, pid: user.id, did: userId, lastUpdate: lastUpdate.value || updateDate }
 }
 
 export const actions = {
-    disconnect: async ({ cookies }) => {
+    disconnect: async ({ cookies, fetch }) => {
         const sessionID = cookies.get('session')!
         const res = await kv.get(keys.authSession(sessionID))
         const userId = res.value!.toString()
         const accessToken = await getAccessToken(userId)
-        await pushMetadata(accessToken!)
+        await pushMetadata(accessToken!, fetch)
         await kv.atomic()
             .delete(keys.authSession(sessionID))
             .delete(keys.lastUpdate(userId))
             .delete(keys.userPronounsPageID(userId))
             .delete(keys.userTokens(userId))
         .commit()
-        await revokeAccessToken(userId)
+        await revokeAccessToken(userId, fetch)
         cookies.delete('session', { path: '/' })
         cookies.delete('state', { path: '/' })
         throw redirect(302, '/')

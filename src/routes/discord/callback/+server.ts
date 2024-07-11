@@ -2,7 +2,7 @@ import { kv, keys } from '$lib/db'
 import { discord, getUserData } from '$lib/discord'
 import { json, redirect } from '@sveltejs/kit'
 
-export async function GET({ url, cookies }) {
+export async function GET({ url, cookies, fetch }) {
     const code = url.searchParams.get('code')
     const state = url.searchParams.get('state')
 
@@ -16,13 +16,13 @@ export async function GET({ url, cookies }) {
     }
 
     const tokens = await discord.validateAuthorizationCode(code);
-    const me = await getUserData(tokens.accessToken);
+    const me = await getUserData(tokens.accessToken, fetch);
     const sessionID = crypto.randomUUID()
 
     await kv.atomic()
         .set(keys.userTokens(me.id), tokens)
         .set(keys.authSession(sessionID), me.id)
-        .commit()
+    .commit()
     
     cookies.set('session', sessionID, { httpOnly: true, path: '/' })
     throw redirect(302, "/next")

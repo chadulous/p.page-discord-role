@@ -7,7 +7,7 @@ import { dev } from "$app/environment"
 
 export const discord = new Discord(clientId, clientSecret, dev?'http://localhost:5173/discord/callback':'https://prpage-discord.deno.dev/discord/callback');
 
-export async function getUserData(accessToken: string) {
+export async function getUserData(accessToken: string, fetch: typeof window.fetch) {
     const URL = "https://discord.com/api/users/@me"
     const response = await fetch(URL, {
         headers: {
@@ -28,7 +28,7 @@ export async function getAccessToken(userId: string, getRef = false) {
     return getRef?tokens.refreshToken:tokens.accessToken
 }
 
-export async function pushMetadata(accessToken: string, username?: string) {
+export async function pushMetadata(accessToken: string, fetch: typeof window.fetch, username?: string) {
     const URL = `https://discord.com/api/v10/users/@me/applications/${clientId}/role-connection`
     const body = username?{
         platform_name: 'pronouns.page',
@@ -44,7 +44,7 @@ export async function pushMetadata(accessToken: string, username?: string) {
     })
 }
 
-export async function revokeAccessToken(userId: string) {
+export async function revokeAccessToken(userId: string, fetch: typeof window.fetch) {
     const URL = 'https://discord.com/api/oauth2/token/revoke'
     await fetch(URL, {
         method: 'POST',
